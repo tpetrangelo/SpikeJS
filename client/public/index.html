@@ -13,11 +13,13 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">  </head>
-    
+    <script type = "text/javascript" src="../src/SendText.js"></script>  
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       const compareValues = () => {
           const subredditArray = document.querySelectorAll(".subredditForArray");
@@ -46,6 +48,14 @@
                 audio.play();
                 console.log(checkState);
                 document.getElementById(checkName).checked = false;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:5000",
+                    crossDomain: true,
+                    data: {
+                      subreddit: element.innerHTML
+                    }
+                });
               }
             }
           });

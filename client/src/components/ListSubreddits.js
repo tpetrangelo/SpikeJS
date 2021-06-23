@@ -5,7 +5,6 @@ import CurrentSubredditUsers from "./CurrentSubredditUsers";
 
 const ListSubreddits = () => {
   const [subreddits, setSubreddits] = useState([]);
-  const [state, setState] = useState([]);
   
   const deleteSubreddit = async (subredditDelete) => {
     try {
